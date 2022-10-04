@@ -14,6 +14,4 @@ However, it can also be an addon for it if in some cases the bypass does not wor
 // @match        http*://quizlet.com/explanations/questions/*
 ```
 
-ALSO - most explanations by Quizlet can be found inside a book. The questions category of Quizlet is something that you're likely to see if you are to google a question and it pops up on Quizlet.
-
 
