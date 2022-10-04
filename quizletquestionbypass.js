@@ -29,11 +29,11 @@ window.addEventListener('load', function() {
 
 
   // add new container
-  var button = document.createElement("div");
-  button.setAttribute('id', 'imageContainer')
-  button.style.backgroundColor = "white";
+  var imgCont = document.createElement("div");
+  imgCont.setAttribute('id', 'imageContainer')
+  imgCont.style.backgroundColor = "white";
 
-  document.body.appendChild(button);
+  document.body.appendChild(imgCont);
 
   var container = document.getElementById('imageContainer');
   var docFrag = document.createDocumentFragment();
