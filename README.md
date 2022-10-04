@@ -9,3 +9,6 @@ Test on some arbitrary explanation such as: [this](https://quizlet.com/explanati
 
 This works extremely well with the [Quizlet Bypass](https://github.com/rospino74/Quizlet-Bypass)
 
+ALSO - most explanations by Quizlet can be found inside a book. The questions category of Quizlet is something that you're likely to see if you are to google a question and it pops up on Quizlet.
+
+
