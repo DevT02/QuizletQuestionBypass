@@ -12,7 +12,7 @@
 
 window.addEventListener('load', function() {
   'use strict';
-  var paywall = document.getElementById('__NEXT_DATA__'); // get paywall
+  var paywall = document.getElementById('__NEXT_DATA__'); // get data (all urls!)
   var data = paywall.outerHTML; // outer json html
 
   // couldve used regex, found it annoying
