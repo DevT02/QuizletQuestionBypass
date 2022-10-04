@@ -10,8 +10,8 @@ Test on some arbitrary explanation such as: [this](https://quizlet.com/explanati
 This works extremely well with the [Quizlet Bypass](https://github.com/rospino74/Quizlet-Bypass).
 However, it can also be an addon for it if in some cases the bypass does not work and you need to refresh. If you wish to replace quizlet bypass for this, add these two lines to the top of the script:
 ```js
+// @match        http*://www.quizlet.com/explanations/textbook-solutions/*
 // @match        http*://quizlet.com/explanations/textbook-solutions/*
-// @match        http*://quizlet.com/explanations/questions/*
 ```
 
 
