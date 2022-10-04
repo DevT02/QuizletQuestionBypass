@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  Gives you the images of the solutions on the bottom. Works best with auto-login quizlet.
-// @author       You
+// @author       DevT02
 // @match        http*://www.quizlet.com/explanations/questions/*
 // @match        http*://quizlet.com/explanations/questions/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
