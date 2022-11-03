@@ -1,5 +1,5 @@
 # Quizlet Questions Bypass
-remove paywalls and unblur katex,
+Remove paywalls and unblur katex,
 also displays quizlet step by step guide images on the bottom of the page
 
 To install, use Tamper Monkey and create a new script. Copy and paste code into a script and do File -> Save.
