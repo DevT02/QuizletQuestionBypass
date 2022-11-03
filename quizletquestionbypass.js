@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Quizlet Question Bypass
 // @namespace    http://tampermonkey.net/
-// @version      0.21
+// @version      0.2
 // @description  Gives you the images of the solutions on the bottom. Works best with auto-login quizlet.
 // @author       DevT02
 // @match        http*://www.quizlet.com/explanations/questions/*
@@ -30,13 +30,12 @@ window.addEventListener('load', function() {
 
   // Actually unblur KATEX
   selectEachElement.each(function (index, element){
-       var isLastElement = index == selectEachElement.length - 1;
-       if (!isLastElement){
-           $(selectEachElement).eq(index).children().eq(1).children().first().children().first().removeAttr('style').css("filter","blur(0)")
-       }
+       $(selectEachElement).eq(index).children().eq(1).children().first().children().first().removeAttr('style').css("filter","blur(0)")
+
   });
-  
-  // remove URLs that we found earlier but dont need.
+
+ // WORKING  $("div[class^='ExplanationsSolutionCard'],div[class*=' ExplanationsSolutionCard']").eq(1).children().eq(1).children().first().children().first().removeAttr('style').css("filter","blur(0)"); <-- (bruh the amount of debugging)
+
   for(let i = 0; i < data.length; i++){
     data[i] = data[i].substring(0, data[i].indexOf("\""))
     if (dataIncludes("lateximg.png", i) || dataIncludes("quizlet.com/explanations", i) || dataIncludes("assets", i) || dataIncludes("textbook_covers", i) || dataIncludes("cache", i)){
