@@ -2,7 +2,7 @@
 Remove paywalls and unblur katex,
 also displays quizlet step by step guide images on the bottom of the page.
 
-Currently the best script for unblurring anything involving math, as KATEX is not obfuscated/ecnrypted on the quizlet website. 
+Currently the best script for unblurring anything involving math, as KATEX is not obfuscated/encrypted on the quizlet website. 
 
 To install, use Tamper Monkey and create a new script. Copy and paste code into a script and do File -> Save.
 Test on some arbitrary explanation such as: [this](https://quizlet.com/explanations/questions/a-cylindrical-tank-with-a-2-12908986-fe03-4daf-ba30-3bfc446f8449)
