@@ -16,6 +16,9 @@
 
 window.addEventListener('load', function() {
   'use strict';
+  var LOGGED_IN = true;
+
+
   var paywall = document.getElementById('__NEXT_DATA__'); // get paywall
   var data = paywall.outerHTML == null ? location.reload() : paywall.outerHTML; // outer json html (RELOAD IF NO HTML IS AVAILABLE, THIS IS FOR FIREFOX)
   console.log('Pre-checks completed! QuizletQuestionBypass by DevT02')
@@ -28,14 +31,16 @@ window.addEventListener('load', function() {
   }
   console.log(data)
   var selectEachElement = $("div[class^='ExplanationsSolutionCard'],div[class*=' ExplanationsSolutionCard']") // LUL selector
-  var selectElementContainer = $("div[class^='ExplanationSolutionsContainer'],div[class*=' ExplanationSolutionsContainer']") // another LUL selector
+
+  if (!LOGGED_IN){
+  var selectElementContainer = $("div[class^='ExplanationSolutionsContainer'],div[class*=' ExplanationSolutionsContainer']")
   $(selectElementContainer).eq(0).removeAttr('style').css("max-height","10000rem") // best for when not logged in
 
   selectElementContainer.each(function (index, element){
       console.log($(selectElementContainer).eq(0).children().removeAttr('hidden')) // show hidden divs (again best when not logged in)
 
   });
-
+  }
 
   // var selectEachNextPage = $("div[class^='NavigationLink'],div[class*=' NavigationLink']")
   // var href;
