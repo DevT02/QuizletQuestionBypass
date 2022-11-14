@@ -92,7 +92,20 @@ window.addEventListener('load', function() {
     btn.style.transitionDuration = '0.4s';
     btn.style.display = 'inline-block';
     btn.style.margin= '6px 8px';
-    btn.style.innerText = "Redirect to another problem";
+    switch (index){
+        case 0:
+           btn.innerText = "Next Problem";
+           break;
+        case 1:
+           btn.innerText = "Skip 2 Problems";
+           break;
+         case 2:
+           btn.innerText = "Previous Problem";
+           break;
+        default:
+           btn.innerText = "Back to Textbook";
+
+    }
     btn.style.padding = '20px 40px';
     btn.style.background = 'white'; // setting the background color to teal
     btn.style.color = 'black'; // setting the color to white
