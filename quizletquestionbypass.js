@@ -88,8 +88,8 @@ window.addEventListener('load', function() {
   // skip question buttons if logged in (WIP)
   data2.forEach(function(url, index, originalArray) {
     var btn = document.createElement('button');
-    btn.style.textAlign = 'center'; // setting the width to 200p
-    btn.style.transitionDuration = '0.4s';
+    btn.style.textAlign = 'center';
+    btn.style.transitionDuration = '0.4s'; // if i decide to add a hover event (unfortunately requires a css file)
     btn.style.display = 'inline-block';
     btn.style.margin= '6px 8px';
     switch (index){
@@ -107,8 +107,8 @@ window.addEventListener('load', function() {
 
     }
     btn.style.padding = '20px 40px';
-    btn.style.background = 'white'; // setting the background color to teal
-    btn.style.color = 'black'; // setting the color to white
+    btn.style.background = 'white'; // setting the background color to white
+    btn.style.color = 'black'; // setting the color to black
     btn.style.border = '2px solid #f44336'
     btn.style.fontSize = '20px'; // setting the font size to 20px
     btn.onclick = function() {
