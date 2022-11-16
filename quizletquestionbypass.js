@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Quizlet Question Bypass
 // @namespace    http://tampermonkey.net/
-// @version      0.25
+// @version      0.26
 // @description  Gives you the images of the solutions on the bottom. Works best with auto-login quizlet.
 // @author       DevT02
+// @license MIT
 // @match        http*://www.quizlet.com/explanations/questions/*
 // @match        http*://quizlet.com/explanations/questions/*
 // @match        http*://www.quizlet.com/explanations/textbook-solutions/*
