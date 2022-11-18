@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Quizlet Question Bypass
 // @namespace    http://tampermonkey.net/
-// @version      0.26
+// @version      0.27
 // @description  Gives you the images of the solutions on the bottom. Works best with auto-login quizlet.
 // @author       DevT02
 // @license MIT
@@ -49,19 +49,14 @@ window.addEventListener('load', function() {
   //      console.log($(selectEachElement).eq(0));
   //      console.log($(this).val($().attr("baseURI")));
   // });
-    // Actually unblur KATEX
- // console.log("hrefvalue" + href);
+  
+  
+  // Actually unblur KATEX
   selectEachElement.each(function (index, element){
        $(selectEachElement).eq(index).children().eq(1).children().first().children().first().removeAttr('style').css("filter","blur(0)")
 
   });
-  // window.alert(selectEachElementUnderContainer)
-  //  console.log(selectEachElementUnderContainerTwo)
-//   $(selectEachElementUnderContainer).clone().insertAfter(selectEachElementUnderContainer);
 
-//   $(selectEachElementUnderContainer).eq(0).children().first().eq(1).children().first().eq(1)
-
- // WORKING  $("div[class^='ExplanationsSolutionCard'],div[class*=' ExplanationsSolutionCard']").eq(1).children().eq(1).children().first().children().first().removeAttr('style').css("filter","blur(0)"); <-- (bruh the amount of debugging)
   var data2 = [];
   for(let i = 0; i < data.length; i++){
     data[i] = data[i].substring(0, data[i].indexOf("\""))
@@ -120,63 +115,21 @@ window.addEventListener('load', function() {
   buttonContainer.appendChild(buttonFrag);
 
 
-
-//   $("body").append ( `
-// <div class="b1opuclq">
-//   <div class="n8ph3fp">
-//     <div class="pm71d3p">
-//       <div class="NavigationLink--previous l1srttcv">
-//         <a aria-label="Exercise 38" class="AssemblyLink AssemblyLink--medium AssemblyLink--primary" href="https://quizlet.com/explanations/textbook-solutions/calculus-early-transcendentals-7th-edition-9780538497909/chapter-13-exercises-38-51c1de04-83d6-422e-b1b3-9d88871db621">
-//           <svg aria-label="caret left" class="AssemblyIcon AssemblyIcon--small-deprecated" role="img">
-//             <noscript></noscript>
-//             <use xlink:href="#caret-left"></use>
-//             <noscript></noscript>
-//           </svg>
-//           <span>Exercise 38</span>
-//         </a>
-//       </div>
-//     </div>
-//     <div class="c19lz1jp">
-//       <div class="">
-//         <div class="ShowStepsButtonContainer b6g4t1k">
-//           <button type="button" aria-label="Show all steps" class="AssemblyButtonBase AssemblyPrimaryButton--default AssemblyButtonBase--large AssemblyButtonBase--padding AssemblyButtonBase--fullWidth">
-//             <span>Show all steps</span>
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//     <div class="n5cc71p">
-//       <div class="NavigationLink--next l1srttcv">
-//         <a aria-label="Exercise 2" class="AssemblyLink AssemblyLink--medium AssemblyLink--primary" href="https://quizlet.com/explanations/textbook-solutions/calculus-early-transcendentals-7th-edition-9780538497909/chapter-13-exercises-2-ca468437-b351-4d0e-b434-f21d63e85c3a">
-//           <span>Exercise 2</span>
-//           <svg aria-label="caret right" class="AssemblyIcon AssemblyIcon--small-deprecated" role="img">
-//             <noscript></noscript>
-//             <use xlink:href="#caret-right"></use>
-//             <noscript></noscript>
-//           </svg>
-//         </a>
-//       </div>
-//     </div>
-//   </div>
-// </div>
-// ` );
-
   console.log(data)
 
-   // remove popup
-   var paywallremover = document.getElementsByClassName("hideBelow--s")
-   var paywallremover2 = document.getElementsByClassName("hideAbove--s")
+  // remove popup
+  var paywallremover = document.getElementsByClassName("hideBelow--s")
+  var paywallremover2 = document.getElementsByClassName("hideAbove--s")
 
-   try{
-       paywallremover[0].remove()
-       paywallremover2[0].remove()
-
-   }
-   catch (err){
-       console.log(err)
-   }
-  // add new container
-
+  try{
+      paywallremover[0].remove()
+      paywallremover2[0].remove()
+  }
+  catch (err){
+      console.log(err)
+  }
+  
+  // add new container for images
   var imgCont = document.createElement("div");
   imgCont.setAttribute('id', 'imageContainer')
   imgCont.style.backgroundColor = "white";
@@ -192,5 +145,13 @@ window.addEventListener('load', function() {
   });
   container.appendChild(docFrag);
 
+  
+  // to work in tandem with quizlet bypass
+  let div = document.createElement('div');
+  div.classList.add('hideBelow--s');
+  document.body.appendChild(div)
+  let div2 = document.createElement('div');
+  div2.classList.add('hideAbove--s');
+  document.body.appendChild(div2)
 }, false);
 
