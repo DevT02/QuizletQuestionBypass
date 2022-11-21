@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Quizlet Question Bypass
 // @namespace    http://tampermonkey.net/
-// @version      0.27
+// @version      0.28
 // @description  Gives you the images of the solutions on the bottom. Works best with auto-login quizlet.
 // @author       DevT02
 // @license MIT
@@ -49,8 +49,8 @@ window.addEventListener('load', function() {
   //      console.log($(selectEachElement).eq(0));
   //      console.log($(this).val($().attr("baseURI")));
   // });
-  
-  
+
+
   // Actually unblur KATEX
   selectEachElement.each(function (index, element){
        $(selectEachElement).eq(index).children().eq(1).children().first().children().first().removeAttr('style').css("filter","blur(0)")
@@ -83,24 +83,28 @@ window.addEventListener('load', function() {
 
   // skip question buttons if logged in (WIP)
   data2.forEach(function(url, index, originalArray) {
+    console.log(originalArray.length)
+    console.log(index)
     var btn = document.createElement('button');
     btn.style.textAlign = 'center';
     btn.style.transitionDuration = '0.4s'; // if i decide to add a hover event (unfortunately requires a css file)
     btn.style.display = 'inline-block';
     btn.style.margin= '6px 8px';
-    switch (index){
-        case 0:
+    switch (true){
+        case (index == 0):
            btn.innerText = "Next Problem";
            break;
-        case 1:
+        case (index == 1):
            btn.innerText = "Skip 2 Problems";
            break;
-         case 2:
+        case (index == 2):
            btn.innerText = "Previous Problem";
            break;
-        default:
+        case (index == originalArray.length - 1):
            btn.innerText = "Back to Textbook";
-
+           break;
+        default:
+           return;
     }
     btn.style.padding = '20px 40px';
     btn.style.background = 'white'; // setting the background color to white
@@ -113,6 +117,9 @@ window.addEventListener('load', function() {
     buttonContainer.appendChild(btn);
   });
   buttonContainer.appendChild(buttonFrag);
+  document.getElementById("buttonContainer").style.display = "flex";
+  document.getElementById("buttonContainer").style.alignItems = "center";
+  document.getElementById("buttonContainer").style.justifyContent = "center";
 
 
   console.log(data)
@@ -128,7 +135,7 @@ window.addEventListener('load', function() {
   catch (err){
       console.log(err)
   }
-  
+
   // add new container for images
   var imgCont = document.createElement("div");
   imgCont.setAttribute('id', 'imageContainer')
@@ -145,7 +152,7 @@ window.addEventListener('load', function() {
   });
   container.appendChild(docFrag);
 
-  
+
   // to work in tandem with quizlet bypass
   let div = document.createElement('div');
   div.classList.add('hideBelow--s');
@@ -154,4 +161,3 @@ window.addEventListener('load', function() {
   div2.classList.add('hideAbove--s');
   document.body.appendChild(div2)
 }, false);
-
