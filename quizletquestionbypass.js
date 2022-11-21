@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Quizlet Question Bypass
 // @namespace    http://tampermonkey.net/
-// @version      0.28
+// @version      0.29
 // @description  Gives you the images of the solutions on the bottom. Works best with auto-login quizlet.
 // @author       DevT02
 // @license MIT
@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
   function dataIncludes(a1, i){
     return data[i].includes(a1)
   }
-  console.log(data)
+
   var selectEachElement = $("div[class^='ExplanationsSolutionCard'],div[class*=' ExplanationsSolutionCard']") // LUL selector
 
   if (!LOGGED_IN){
@@ -38,8 +38,7 @@ window.addEventListener('load', function() {
   $(selectElementContainer).eq(0).removeAttr('style').css("max-height","10000rem") // best for when not logged in
 
   selectElementContainer.each(function (index, element){
-      console.log($(selectElementContainer).eq(0).children().removeAttr('hidden')) // show hidden divs (again best when not logged in)
-
+      $(selectElementContainer).eq(0).children().removeAttr('hidden') // show hidden divs (again best when not logged in)
   });
   }
 
@@ -68,10 +67,7 @@ window.addEventListener('load', function() {
         data2.push(data[i])
     }
   }
-  for (let i = 0; i < 3; i++){
-     console.log(data2[i]);
-      // 0 = next question, 1 = 2nd next question, 2 = previous!
-  }
+
 
   var buttonCont = document.createElement("div");
   buttonCont.setAttribute('id', 'buttonContainer');
@@ -83,8 +79,6 @@ window.addEventListener('load', function() {
 
   // skip question buttons if logged in (WIP)
   data2.forEach(function(url, index, originalArray) {
-    console.log(originalArray.length)
-    console.log(index)
     var btn = document.createElement('button');
     btn.style.textAlign = 'center';
     btn.style.transitionDuration = '0.4s'; // if i decide to add a hover event (unfortunately requires a css file)
@@ -120,9 +114,6 @@ window.addEventListener('load', function() {
   document.getElementById("buttonContainer").style.display = "flex";
   document.getElementById("buttonContainer").style.alignItems = "center";
   document.getElementById("buttonContainer").style.justifyContent = "center";
-
-
-  console.log(data)
 
   // remove popup
   var paywallremover = document.getElementsByClassName("hideBelow--s")
