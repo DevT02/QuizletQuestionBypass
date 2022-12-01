@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Quizlet Question Bypass
 // @namespace    http://tampermonkey.net/
-// @version      0.29
+// @version      0.3
 // @description  Gives you the images of the solutions on the bottom. Works best with auto-login quizlet.
 // @author       DevT02
 // @license MIT
@@ -24,7 +24,7 @@ window.addEventListener('load', function() {
   var data = paywall.outerHTML == null ? location.reload() : paywall.outerHTML; // outer json html (RELOAD IF NO HTML IS AVAILABLE, THIS IS FOR FIREFOX)
   console.log('Pre-checks completed! QuizletQuestionBypass by DevT02')
   console.log('Check out my other projects at https://github.com/DevT02/') // START PROGRAM
-  var currentUrl = window.location.href;
+
   // split urls into an array named "data"
   data = data.split("https://").map(val => { return "https://"+val }).slice(1);
   function dataIncludes(a1, i){
@@ -34,20 +34,13 @@ window.addEventListener('load', function() {
   var selectEachElement = $("div[class^='ExplanationsSolutionCard'],div[class*=' ExplanationsSolutionCard']") // LUL selector
 
   if (!LOGGED_IN){
-  var selectElementContainer = $("div[class^='ExplanationSolutionsContainer'],div[class*=' ExplanationSolutionsContainer']")
-  $(selectElementContainer).eq(0).removeAttr('style').css("max-height","10000rem") // best for when not logged in
+      var selectElementContainer = $("div[class^='ExplanationSolutionsContainer'],div[class*=' ExplanationSolutionsContainer']")
+      $(selectElementContainer).eq(0).removeAttr('style').css("max-height","10000rem") // best for when not logged in
 
-  selectElementContainer.each(function (index, element){
-      $(selectElementContainer).eq(0).children().removeAttr('hidden') // show hidden divs (again best when not logged in)
-  });
+      selectElementContainer.each(function (index, element){
+          $(selectElementContainer).eq(0).children().removeAttr('hidden') // show hidden divs (again best when not logged in)
+      });
   }
-
-  // var selectEachNextPage = $("div[class^='NavigationLink'],div[class*=' NavigationLink']")
-  // var href;
-  // selectEachNextPage.each(function (index, element){
-  //      console.log($(selectEachElement).eq(0));
-  //      console.log($(this).val($().attr("baseURI")));
-  // });
 
 
   // Actually unblur KATEX
@@ -116,12 +109,9 @@ window.addEventListener('load', function() {
   document.getElementById("buttonContainer").style.justifyContent = "center";
 
   // remove popup
-  var paywallremover = document.getElementsByClassName("hideBelow--s")
-  var paywallremover2 = document.getElementsByClassName("hideAbove--s")
-
+  var paywallremover = [ document.getElementsByClassName("hideBelow--s"), document.getElementsByClassName("hideBelow--s"), document.getElementsByClassName("hideBelow--m")]
   try{
-      paywallremover[0].remove()
-      paywallremover2[0].remove()
+      paywallremover.forEach(element => element[0].remove())
   }
   catch (err){
       console.log(err)
